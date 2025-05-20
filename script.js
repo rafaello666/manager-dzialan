@@ -5,13 +5,18 @@ document.addEventListener('DOMContentLoaded', () => {
   fetch('flow.json')
     .then(res => res.json())
     .then(json => {
-      flow = json;
+      if (!validateFlow(json)) {
+        throw new Error('Niepoprawny format danych');
+      }
+       flow = json;
       // Pobierz KLUCZ pierwszego pytania z flow.json
       currentQuestion = Object.keys(flow)[0];
       displayQuestion(currentQuestion);
     })
-    .catch(err => console.error('Błąd ładowania flow.json:', err));
-
+    .catch(err => {
+      console.error('Błąd ładowania flow.json:', err);
+      showError('Problem z wczytaniem danych. Spróbuj ponownie później.');
+    });
   document.getElementById('yes-btn')
     .addEventListener('click', () => handleAnswer('yes'));
   document.getElementById('no-btn')
@@ -62,4 +67,28 @@ function continueAfterAction() {
     currentQuestion = Object.keys(flow).reverse()[0]; // ostatni klucz, zakładając że to Q006
   }
   displayQuestion(currentQuestion);
+}
+
+
+function showError(message) {
+  const qElem = document.getElementById('question');
+  qElem.innerText = message;
+  document.getElementById('buttons').style.display = 'none';
+  document.getElementById('question-container').style.display = 'block';
+  document.getElementById('action-container').style.display = 'none';
+}
+
+function validateFlow(data) {
+  if (typeof data !== 'object' || data === null) {
+    return false;
+  }
+  for (const step of Object.values(data)) {
+    if (typeof step !== 'object' || step === null) {
+      return false;
+    }
+    if (!('text' in step || 'done' in step)) {
+      return false;
+    }
+  }
+  return true;
 }
