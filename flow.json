@@ -1,0 +1,117 @@
+{
+  
+"kontakt z rodziną, rodzicami": {
+  "text": "czy dzwoniles dzisiaj do rodziców albo byles u nich osobiscie?",
+  "yes": "jezdzijbolcem",
+  "noAction": "zadzwoń do rodziców do taty albo do mamy i pogadaj z nimi"
+},
+  "jezdzijbolcem": {
+    "text": "czy aplikacja bolt driver ma godziny dostepne do jezdzenia?",
+    "yesAction": "jezdzij bolcem",
+    "no": "aplikacja"
+  },
+  "aplikacja": {
+    "text": "Jak uważasz, czy twoja aplikacja do działań jest zaktualizowana optymalnie?",
+    "yes": "kmbolt",
+    "noAction": "zaktualizuj ją jak najlepiej"
+  },
+  "kmbolt": {
+    "text": "czy przeanalizowales sesje z chatgpt na temat kiloemtrow w bolt?",
+    "yes": "Qmonitor",
+    "noAction": "przeanalizuj i dokoncz kwestie z kilometrami z chatgpt"
+  },
+  "Qmonitor": {
+    "text": "Czy masz włączony monitoring zajęć?",
+    "yes": "Q001",
+    "noAction": "Uruchom aplikację do monitorowania zajęć lub jeśli jej nie masz to stwórz ją."
+  },
+  "Q001": {
+    "text": "Czy masz metylfenidat lub modafinil lub piko?",
+    "yes": "QN2",
+    "noAction": "Zarabiaj na Bolcie, aby zdobyć środki."
+  },
+  "QN2": {
+    "text": "Czy masz już odblokowane Bolt Driver i nie wyglądasz ani nie zachowujesz się jak nacpany albo jak wrak człowieka?",
+    "yesAction": "Kup energetyka, zatankuj i idź zapierdalaj 12 h na Bolcie bez przerwy.",
+    "no": "Qp1"
+  },
+  "Qp1": {
+    "text": "Czy minęło 1.5 godziny od ostatniego przyjęcia Piko?",
+    "yes": "Qp2",
+    "noAction": "Oglądaj zdjęcia perwersyjne i ewentualnie wal konia do tego."
+  },
+  "Qp2": {
+    "text": "Czy podczas oglądania perwersyjnych zdjęć zrobiłeś ostatnie swoje ćwiczenie fizyczne ponad 7 minut temu?",
+    "yesAction": "Zrób ćwiczenie fizyczne, a następnie zapisz do czatu GPT o wyniku i godzinie.",
+    "noAction": "Kontynuuj oglądanie perwersyjnych zdjęć oraz przejdź dalej, jeśli coś jest możliwe jeszcze do zrealizowania."
+  },
+  "Qp3": {
+    "text": "Czy w ciągu ostatnich 15 minut ćwiczyłeś Agile Fingers przez co najmniej 2 minuty?",
+    "yes": "Qstart",
+    "noAction": "Poćwicz w Agile Fingers co najmniej 2 minuty."
+  },
+  "Qstart": {
+    "text": "Czy czujesz się źle?",
+    "yes": "Qbad",
+    "no": "QADHD"
+  },
+  "Qbad": {
+    "text": "Czy wiesz, co zrobić, aby przestać się źle czuć?",
+    "yesAction": "Zrób to natychmiast, aby poprawić samopoczucie.",
+    "no": "QADHD"
+  },
+  "QADHD": {
+    "text": "Czy nie masz siły pracować albo masz objawy ADHD dość mocne uniemożliwiające Ci satysfakcjonujące życie?",
+    "yesAction": "Przyjmij Piko.",
+    "no": "QN1"
+  },
+  "QN1": {
+    "text": "Czy dojebales szczepan?",
+    "yes": "QN2",
+    "noAction": "Praca nad darkwebem 1.5 godziny."
+  },
+  "QMILF": {
+    "text": "Czy masz w najbliższych minutach do czynienia z milfem?",
+    "yesAction": "Weź Piko.",
+    "no": "Qsleep"
+  },
+  "Qsleep": {
+    "text": "Czy chce mi się spać?",
+    "yesAction": "Idź spać i odpocznij.",
+    "no": "Q000"
+  },
+  "Q000": {
+    "text": "Czy minęły 3 godziny od Twojej ostatniej co najmniej 30-minutowej pracy z Chatem GPT?",
+    "yesAction": "Pracuj w domu z Chatem GPT przez co najmniej 30 minut.",
+    "no": "Q002"
+  },
+  "Q002": {
+    "text": "Czy czujesz się nadopaminowany?",
+    "yes": "Q003",
+    "noAction": "Nadopaminuj się metylofenidatem lub modafinilem lub, jeśli nie masz, wypij dwa energetyki."
+  },
+  "Q003": {
+    "text": "Czy jadłeś w ciągu ostatnich 3 godzin?",
+    "yes": "Q004",
+    "noAction": "Zjedz coś teraz."
+  },
+  "Q004": {
+    "text": "Czy oddałeś długi?",
+    "yes": "Q004a",
+    "noAction": "Zarabiaj, aby spłacić długi."
+  },
+  "Q004a": {
+    "text": "Czy masz środki na koncie lub gotówkę?",
+    "yes": "Q005",
+    "noAction": "Jeździj na Bolcie, aż zarobisz potrzebną gotówkę."
+  },
+  "Q005": {
+    "text": "Pracowałeś z ChatGPT PRO min. 2 godzin?",
+    "yes": "Q006",
+    "noAction": "Pracuj z ChatGPT PRO."
+  },
+  "Q006": {
+    "text": "Wszystko wykonane na dziś! 🎉",
+    "done": true
+  }
+}
