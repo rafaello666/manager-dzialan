@@ -43,7 +43,8 @@
   "Qp2": {
     "text": "Czy podczas oglądania perwersyjnych zdjęć zrobiłeś ostatnie swoje ćwiczenie fizyczne ponad 7 minut temu?",
     "yesAction": "Zrób ćwiczenie fizyczne, a następnie zapisz do czatu GPT o wyniku i godzinie.",
-    "noAction": "Kontynuuj oglądanie perwersyjnych zdjęć oraz przejdź dalej, jeśli coś jest możliwe jeszcze do zrealizowania."
+   "noAction": "Kontynuuj oglądanie perwersyjnych zdjęć oraz przejdź dalej, jeśli coś jest możliwe jeszcze do zrealizowania.",
+    "next": "Qp3"
   },
   "Qp3": {
     "text": "Czy w ciągu ostatnich 15 minut ćwiczyłeś Agile Fingers przez co najmniej 2 minuty?",

@@ -1,5 +1,6 @@
 let flow;
 let currentQuestion;
+const FINAL_STEP_ID = 'Q006';
 
 document.addEventListener('DOMContentLoaded', () => {
   fetch('flow.json')
@@ -57,14 +58,16 @@ function displayAction(text) {
 }
 
 function continueAfterAction() {
-  const step = flow[currentQuestion];
-  // po akcji idziemy do yes albo no albo domyślnie kończymy
-  if (step.yes) {
+  let step = flow[currentQuestion];
+  // po akcji idziemy do wskazanego kroku lub do yes/no, a na końcu do FINAL_STEP_ID
+  if (step.next) {
+    currentQuestion = step.next;
+  } else if (step.yes) {
     currentQuestion = step.yes;
   } else if (step.no) {
     currentQuestion = step.no;
   } else {
-    currentQuestion = Object.keys(flow).reverse()[0]; // ostatni klucz, zakładając że to Q006
+    currentQuestion = FINAL_STEP_ID;
   }
   displayQuestion(currentQuestion);
 }
