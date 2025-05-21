@@ -127,8 +127,20 @@
   },
   "Q004a": {
     "text": "Czy masz środki na koncie lub gotówkę?",
-    "yes": "Q005",
+    "yes": "Qfinanse",
     "noAction": "Jeździj na Bolcie, aż zarobisz potrzebną gotówkę."
+  },
+  "Qfinanse": {
+    "text": "Czy zaplanowałeś na dziś działania poprawiające Twoją sytuację finansową?",
+    "yes": "Qtrening",
+    "noAction": "Wypisz konkretny plan finansowy na najbliższy czas, np. ile kursów Boltem zrobisz.",
+    "next": "Qtrening"
+  },
+  "Qtrening": {
+    "text": "Czy zrobiłeś dziś trening siłowy lub zaplanowałeś go w kalendarzu?",
+    "yes": "Q005",
+    "noAction": "Wykonaj co najmniej 30 minut treningu siłowego albo rozpisz krótszy zestaw ćwiczeń.",
+    "next": "Q005"
   },
   "Q005": {
     "text": "Pracowałeś z ChatGPT PRO min. 2 godzin?",
