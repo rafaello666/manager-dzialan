@@ -1,7 +1,7 @@
 {
   
 "kontakt z rodziną, rodzicami": {
-  "text": "czy dzwoniles dzisiaj do rodziców albo byles u nich osobiscie?",
+  "text": "czy dzwoniles dzisiaj do rodziców albo byles u nich osobiscie albo jest godzina ze spia?",
   "yes": "jezdzijbolcem",
   "noAction": "zadzwoń do rodziców do taty albo do mamy i pogadaj z nimi"
 },

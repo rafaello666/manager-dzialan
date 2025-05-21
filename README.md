@@ -4,7 +4,19 @@
 
 ## Uruchomienie
 
-Aplikacja nie wymaga instalacji ani serwera. Wystarczy otworzyć plik `index.html` w przeglądarce internetowej.
+Aplikacja nie wymaga instalacji. Można ją otworzyć bezpośrednio z pliku,
+jednak niektóre przeglądarki blokują zapytania `fetch` przy adresie
+`file://`, przez co `flow.json` nie zostanie wczytany. Aby tego uniknąć,
+uruchom prosty serwer lokalny, np.:
+
+```bash
+python3 -m http.server
+# lub
+npx serve
+```
+
+Po starcie serwera otwórz `http://localhost:8000` i aplikacja będzie działać
+poprawnie.
 
 ## Struktura projektu
 
