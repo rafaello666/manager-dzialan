@@ -11,9 +11,33 @@
     "no": "aplikacja"
   },
   "aplikacja": {
-    "text": "Jak uważasz, czy twoja aplikacja do działań jest zaktualizowana optymalnie?",
+    "text": "Jak uważasz, czy Twoja aplikacja do działań jest zaktualizowana optymalnie?",
     "yes": "kmbolt",
-    "noAction": "zaktualizuj ją jak najlepiej"
+    "no": "aplikacja_pomysly"
+  },
+  "aplikacja_pomysly": {
+    "text": "Czy masz już gdzieś spisane pomysły ulepszeń do swojej aplikacji (np. z rozmów z ChatGPT)?",
+    "yes": "aplikacja_priorytet",
+    "noAction": "Wyeksportuj lub spisz swoje pomysły na ulepszenia – przejrzyj historie czatów, notatki. Zgromadź je w jednym miejscu (np. Notion lub plik markdown).",
+    "next": "aplikacja_priorytet"
+  },
+  "aplikacja_priorytet": {
+    "text": "Czy z tej listy pomysłów wybrałeś jeden priorytetowy, który zrealizujesz jako pierwszy?",
+    "yes": "aplikacja_plan",
+    "noAction": "Przejrzyj listę i wybierz jeden pomysł, od którego zaczniesz aktualizację (np. najbardziej wartościowy lub najszybszy do wdrożenia).",
+    "next": "aplikacja_plan"
+  },
+  "aplikacja_plan": {
+    "text": "Czy masz opracowany plan wdrożenia tego pomysłu (podzielony na małe zadania)?",
+    "yes": "aplikacja_realizacja",
+    "noAction": "Rozbij wybrany pomysł na mniejsze kroki/zadania. Wypisz konkretnie, co po kolei zrobisz, aby go wdrożyć.",
+    "next": "aplikacja_realizacja"
+  },
+  "aplikacja_realizacja": {
+    "text": "Czy zaplanowałeś już konkretny czas na pracę nad wdrożeniem tego pomysłu w aplikacji?",
+    "yesAction": "Świetnie zaplanowane – powodzenia we wdrożeniu!",
+    "noAction": "Otwórz kalendarz i wyznacz najbliższy wolny blok (nawet 30 min) na pracę nad aktualizacją. Ustaw przypomnienie, żeby nie zapomnieć.",
+    "next": "kmbolt"
   },
   "kmbolt": {
     "text": "czy przeanalizowales sesje z chatgpt na temat kiloemtrow w bolt?",
