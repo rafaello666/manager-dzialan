@@ -2,32 +2,20 @@
 <html lang="pl">
 <head>
   <meta charset="UTF-8" />
-  <title>Dopamine-Manager 🚀</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ADHD Manager – Lista zadań</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
-    <h1 class="glow">🚀 Dopamine-Manager</h1>
+  <h1>ADHD Manager – Lista zadań</h1>
 
-    <!-- Kontener pytania i przycisków TAK/NIE -->
-    <div id="question-container">
-      <p id="question"><!-- Treść pytania wstawiana dynamicznie --></p>
-      <div id="buttons">
-        <button id="yes-btn" class="neon-btn green">✅ TAK</button>
-        <button id="no-btn" class="neon-btn red">❌ NIE</button>
-      </div>
-    </div>
+  <form id="task-form">
+    <input type="text" id="task-input" placeholder="Dodaj nowe zadanie..." required />
+    <button type="submit">Dodaj</button>
+  </form>
 
-    <!-- Kontener akcji (po odpowiedzi wymagającej wykonania zadania) -->
-    <div id="action-container" style="display: none;">
-      <p id="action"><!-- Tekst akcji do wykonania --></p>
-      <textarea id="note-input" placeholder="Dodaj notatkę..."></textarea>
-      <button id="save-note-btn" class="neon-btn blue">Zapisz notatkę</button>
-      <button id="continue-btn" class="neon-btn blue">⏩ Kontynuuj</button>
-    </div>
-  </div>
+  <ul id="task-list"></ul>
 
-  <!-- Osadzenie skryptu JavaScript -->
   <script src="script.js"></script>
 </body>
 </html>

@@ -1,59 +1,61 @@
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  background: #111;
-  color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #fdfdfd;
+  color: #333;
+  margin: 2em;
 }
 
-.container {
+h1 {
   text-align: center;
-  width: 90%;
+  color: #336699;
+}
+
+form {
+  margin-bottom: 1em;
+  text-align: center;
+}
+
+#task-input {
+  width: 60%;
+  padding: 0.5em;
+  font-size: 1em;
+}
+
+form button {
+  padding: 0.6em 1em;
+  font-size: 1em;
+  margin-left: 0.5em;
+}
+
+#task-list {
+  list-style: none;
+  padding: 0;
   max-width: 600px;
+  margin: 0 auto;
 }
 
-h1.glow {
-  text-shadow: 0 0 8px #0ff;
-}
-
-#buttons {
+#task-list li {
+  background: #eef;
+  margin: 0.5em 0;
+  padding: 0.6em;
+  font-size: 1.1em;
   display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 1rem;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.neon-btn {
-  padding: 0.5rem 1.2rem;
-  border: none;
-  border-radius: 4px;
-  font-size: 1rem;
+#task-list li.completed {
+  text-decoration: line-through;
+  color: #888;
+  background: #ddd;
+}
+
+.task-buttons button {
+  margin-left: 0.5em;
+  font-size: 0.9em;
   cursor: pointer;
-  color: #fff;
-  text-shadow: 0 0 2px #000;
 }
 
-.neon-btn.green {
-  background: #28a745;
-}
-
-.neon-btn.red {
-  background: #dc3545;
-}
-
-.neon-btn.blue {
-  background: #007bff;
-}
-
-#note-input {
-  width: 100%;
-  margin-top: 1rem;
-  padding: 0.5rem;
-}
-
-#save-note-btn {
-  margin-top: 0.5rem;
+.task-buttons button:hover {
+  opacity: 0.8;
 }

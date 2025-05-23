@@ -2,8 +2,48 @@ let flow;
 let currentQuestion;
 const FINAL_STEP_ID = 'Q006';
 
-document.addEventListener('DOMContentLoaded', () => {
-  // Wczytaj strukturę pytań z pliku JSON
+document.addEventListener('DOMContentLoaded', init);
+
+/** Inicjuje aplikację po załadowaniu DOM. */
+function init() {
+  cacheElements();
+  bindEvents();
+  loadFlow();
+}
+
+const el = {};
+
+/** Skrócony dostęp do elementów DOM. */
+function $(id) {
+  return document.getElementById(id);
+}
+
+/** Zapamiętuje często używane elementy DOM. */
+function cacheElements() {
+  el.question = $('question');
+  el.buttons = $('buttons');
+  el.questionContainer = $('question-container');
+  el.actionContainer = $('action-container');
+  el.action = $('action');
+  el.noteInput = $('note-input');
+  el.saveNoteBtn = $('save-note-btn');
+  el.continueBtn = $('continue-btn');
+  el.yesBtn = $('yes-btn');
+  el.noBtn = $('no-btn');
+}
+
+/** Podpina obsługę kliknięć przycisków. */
+function bindEvents() {
+  el.yesBtn.addEventListener('click', () => handleAnswer('yes'));
+  el.noBtn.addEventListener('click', () => handleAnswer('no'));
+  el.continueBtn.addEventListener('click', continueAfterAction);
+  if (el.saveNoteBtn) {
+    el.saveNoteBtn.addEventListener('click', saveNote);
+  }
+}
+
+/** Wczytuje plik flow.json i uruchamia pierwszy krok. */
+function loadFlow() {
   fetch('flow.json')
     .then(res => res.json())
     .then(json => {
@@ -11,7 +51,6 @@ document.addEventListener('DOMContentLoaded', () => {
         throw new Error('Niepoprawny format danych');
       }
       flow = json;
-      // Pobierz klucz pierwszego pytania z załadowanego obiektu
       currentQuestion = Object.keys(flow)[0];
       displayQuestion(currentQuestion);
     })
@@ -19,121 +58,86 @@ document.addEventListener('DOMContentLoaded', () => {
       console.error('Błąd ładowania flow.json:', err);
       showError('Problem z wczytaniem danych. Spróbuj ponownie później.');
     });
-
-  // Przypięcie event handlerów do przycisków odpowiedzi i akcji:
-  document.getElementById('yes-btn')
-    .addEventListener('click', () => handleAnswer('yes'));
-  document.getElementById('no-btn')
-    .addEventListener('click', () => handleAnswer('no'));
-  document.getElementById('continue-btn')
-    .addEventListener('click', continueAfterAction);
-
-  const saveBtn = document.getElementById('save-note-btn');
-  if (saveBtn) {
-    // Obsługa przycisku "Zapisz notatkę"
-    saveBtn.addEventListener('click', () => {
-      const noteText = document.getElementById('note-input').value;
-      const noteKey = `${currentQuestion}_note`;   // unikalny klucz dla notatki bieżącego pytania
-      localStorage.setItem(noteKey, noteText);     // zapisanie notatki w localStorage
-      // Tymczasowa zmiana etykiety przycisku na potwierdzenie zapisu
-      saveBtn.innerText = 'Zapisano!';
-      setTimeout(() => {
-        saveBtn.innerText = 'Zapisz notatkę';
-      }, 2000);
-    });
-  }
-});
-
-/** 
- * Wyświetla pytanie o podanym identyfikatorze z obiektu `flow`.
- * Ustawia tekst pytania i pokazuje/przycina odpowiednie elementy interfejsu.
- */
-function displayQuestion(id) {
-  const q = flow[id];
-  // Ustaw treść pytania
-  document.getElementById('question').innerText = q.text;
-  // Jeśli krok jest oznaczony jako zakończony (done), ukryj przyciski TAK/NIE
-  document.getElementById('buttons').style.display = q.done ? 'none' : 'flex';
-  // Pokaż kontener z pytaniem, ukryj kontener akcji (notatki)
-  document.getElementById('question-container').style.display = 'block';
-  document.getElementById('action-container').style.display = 'none';
 }
 
-/**
- * Obsługuje odpowiedź użytkownika (tak/nie) dla bieżącego pytania.
- * Na podstawie struktury `flow` decyduje o następnym kroku lub akcji do wykonania.
- */
+/** Ustawia widoczność elementu. */
+function setDisplay(element, visible) {
+  element.style.display = visible ? 'block' : 'none';
+}
+
+function showQuestionContainer() {
+  setDisplay(el.questionContainer, true);
+  setDisplay(el.actionContainer, false);
+}
+
+function showActionContainer() {
+  setDisplay(el.questionContainer, false);
+  setDisplay(el.actionContainer, true);
+}
+
+/** Wyświetla pytanie o podanym identyfikatorze. */
+function displayQuestion(id) {
+  const step = flow[id];
+  el.question.innerText = step.text;
+  el.buttons.style.display = step.done ? 'none' : 'flex';
+  showQuestionContainer();
+}
+
+/** Obsługuje odpowiedź TAK/NIE. */
 function handleAnswer(answer) {
   const step = flow[currentQuestion];
   if (step[answer]) {
-    // Jeśli zdefiniowany jest kolejny krok dla odpowiedzi "yes" lub "no"
     currentQuestion = step[answer];
     displayQuestion(currentQuestion);
-  } else if (step[answer + 'Action']) {
-    // Jeśli zdefiniowana jest akcja do wykonania (yesAction lub noAction)
-    displayAction(step[answer + 'Action']);
+  } else if (step[`${answer}Action`]) {
+    displayAction(step[`${answer}Action`]);
   } else if (step.done) {
-    // Jeśli to krok końcowy (done=true), pozostajemy na nim (koniec scenariusza)
     displayQuestion(currentQuestion);
   }
 }
 
-/**
- * Wyświetla sekcję akcji (pole notatki i komunikat) z podanym tekstem.
- * Użytkownik może wpisać notatkę i kliknąć "Kontynuuj".
- */
-function displayAction(actionText) {
-  document.getElementById('action').innerText = actionText;
-  // Wczytaj zapisaną wcześniej notatkę (jeśli istnieje) dla bieżącego pytania
+/** Wyświetla sekcję akcji wraz z polem notatki. */
+function displayAction(text) {
+  el.action.innerText = text;
   const noteKey = `${currentQuestion}_note`;
-  const savedNote = localStorage.getItem(noteKey) || '';
-  document.getElementById('note-input').value = savedNote;
-  // Pokaż kontener akcji, ukryj kontener pytania
-  document.getElementById('question-container').style.display = 'none';
-  document.getElementById('action-container').style.display = 'block';
+  el.noteInput.value = localStorage.getItem(noteKey) || '';
+  showActionContainer();
 }
 
-/**
- * Obsługa kliknięcia "Kontynuuj" po wykonaniu akcji.
- * Określa następny krok po akcji na podstawie struktury `flow` (pole `next` lub alternatywnie yes/no).
- */
+/** Zapisuje notatkę w localStorage. */
+function saveNote() {
+  const noteKey = `${currentQuestion}_note`;
+  localStorage.setItem(noteKey, el.noteInput.value);
+  el.saveNoteBtn.innerText = 'Zapisano!';
+  setTimeout(() => {
+    el.saveNoteBtn.innerText = 'Zapisz notatkę';
+  }, 2000);
+}
+
+/** Zwraca klucz następnego kroku. */
+function getNextStep(step) {
+  return step.next || step.yes || step.no || FINAL_STEP_ID;
+}
+
+/** Kontynuuje scenariusz po wykonaniu akcji. */
 function continueAfterAction() {
-  const step = flow[currentQuestion];
-  // Po zakończeniu akcji przejdź do kroku wskazanego w `next`,
-  // a jeśli go brak – spróbuj kontynuować ścieżką "yes"/"no", 
-  // w ostateczności zakończ scenariusz.
-  if (step.next) {
-    currentQuestion = step.next;
-  } else if (step.yes) {
-    currentQuestion = step.yes;
-  } else if (step.no) {
-    currentQuestion = step.no;
-  } else {
-    currentQuestion = FINAL_STEP_ID;
-  }
+  currentQuestion = getNextStep(flow[currentQuestion]);
   displayQuestion(currentQuestion);
 }
 
-/**
- * Wyświetla komunikat błędu (np. problem z wczytaniem danych) zamiast pytania.
- */
+/** Wyświetla komunikat błędu. */
 function showError(message) {
-  document.getElementById('question').innerText = message;
-  document.getElementById('buttons').style.display = 'none';
-  document.getElementById('question-container').style.display = 'block';
-  document.getElementById('action-container').style.display = 'none';
+  el.question.innerText = message;
+  el.buttons.style.display = 'none';
+  showQuestionContainer();
 }
 
-/**
- * Prosta walidacja struktury danych `flow` (pytań i akcji).
- * Sprawdza, czy dane są obiektem i czy każdy krok ma pole "text" lub "done".
- */
+/** Prosta walidacja struktury danych flow.json. */
 function validateFlow(data) {
   if (typeof data !== 'object' || data === null) return false;
   for (const step of Object.values(data)) {
     if (typeof step !== 'object' || step === null) return false;
     if (!('text' in step || 'done' in step)) {
-      // Każdy krok powinien mieć przynajmniej pole text lub done
       return false;
     }
   }
