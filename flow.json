@@ -1,5 +1,9 @@
 {
-  
+  "walenie_konia": {
+    "text": "Czy zwaliles sobie konia jesli zaczales go sobie walic?",
+    "yes": "kontakt z rodzina, rodzicami",
+    "noAction": "Zwal konia"
+  },
  "kontakt z rodziną, rodzicami": {
     "text": "czy dzwoniles dzisiaj do rodziców albo byles u nich osobiscie albo jest godzina ze spia?",
     "yes": "spotkanie_ze_znajomym",
