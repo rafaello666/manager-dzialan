@@ -24,7 +24,7 @@ poprawnie.
 - `script.js` – logika aplikacji, która wczytuje pytania z pliku JSON i obsługuje odpowiedzi użytkownika.
 - `flow.json` – przykładowy zestaw pytań i odpowiedzi. Można go łatwo zmodyfikować, aby dopasować aplikację do własnych potrzeb.
   Każdy krok może opcjonalnie zawierać pole `next`, które określa identyfikator kolejnego pytania uruchamianego po wykonaniu akcji, gdy nie występuje odpowiedź `yes` ani `no`.
-  
+  - notatki z każdego kroku są zapisywane lokalnie w przeglądarce i można je edytować po wyświetleniu akcji.
 Pliki znajdują się bezpośrednio w katalogu głównym repozytorium.
 ## Licencja
 

@@ -24,7 +24,23 @@ document.addEventListener('DOMContentLoaded', () => {
     .addEventListener('click', () => handleAnswer('no'));
   document.getElementById('continue-btn')
     .addEventListener('click', continueAfterAction);
-});
+    
+  const saveBtn = document.getElementById('save-note-btn');
+  if (saveBtn) {
+    saveBtn.addEventListener('click', () => {
+      const note = document.getElementById('note-input').value;
+      localStorage.setItem('note', note);
+      saveBtn.innerText = 'Zapisano!';
+      setTimeout(() => {
+        saveBtn.innerText = 'Zapisz notatkę';
+      }, 2000);
+    });
+  }document.getElementById('save-note-btn')
+    .addEventListener('click', () => {
+      const note = document.getElementById('note-input').value;
+      localStorage.setItem(`${currentQuestion}_note`, note);
+    });
+  });
 
 function displayQuestion(id) {
   const q = flow[id];
@@ -53,7 +69,10 @@ function handleAnswer(answer) {
 
 function displayAction(text) {
   document.getElementById('action').innerText = text;
-  document.getElementById('question-container').style.display = 'none';
+  const noteKey = `${currentQuestion}_note`;
+  const saved = localStorage.getItem(noteKey) || '';
+  document.getElementById('note-input').value = saved;
+   document.getElementById('question-container').style.display = 'none';
   document.getElementById('action-container').style.display = 'block';
 }
 
