@@ -35,11 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
         saveBtn.innerText = 'Zapisz notatkę';
       }, 2000);
     });
-  }document.getElementById('save-note-btn')
-    .addEventListener('click', () => {
-      const note = document.getElementById('note-input').value;
-      localStorage.setItem(`${currentQuestion}_note`, note);
-    });
+  }
   });
 
 function displayQuestion(id) {
