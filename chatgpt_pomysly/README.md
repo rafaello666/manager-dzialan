@@ -1,10 +1,16 @@
-# ChatGPT Pomysly
+# ChatGPT Pomysły
 
-W tym katalogu przechowywane są notatki i pomysły pochodzące z rozmów z ChatGPT.
-Każda rozmowa powinna zostać zapisana jako osobny plik Markdown w jednym z
-podkatalogów:
+Ten folder zawiera gotowe pliki z promptami i wzorcami użycia ChatGPT Pro (Codex Tasks) dla projektu `manager-dzialan`.
 
-- `do_zrobienia/` – bieżące zadania i pomysły do realizacji.
-- `archiwum/` – pomysły zrealizowane lub odłożone na później.
+## Struktura
+- `README.md` – opis folderu i instrukcje
+- `bugfix-prompts.md` – prompt do naprawiania błędów
+- `refactor-prompts.md` – prompt do refaktoryzacji kodu
+- `test-prompts.md` – prompt do generowania testów
+- `ci-prompts.md` – prompt do konfiguracji CI/CD
+- `ideas.md` – luźne pomysły i dodatkowe sugestie
 
-Przykładowe rozmowy można dodawać w odpowiednich folderach.
+## Jak używać
+1. Skopiuj wybrany fragment z pliku `.md`.
+2. Utwórz nowe zadanie w Codex Tasks z tym promptem.
+3. Zweryfikuj wygenerowany wynik przed merge.

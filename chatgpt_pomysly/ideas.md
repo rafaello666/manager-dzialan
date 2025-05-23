@@ -1,0 +1,4 @@
+- Migracja do React + Vite (krok 1/3, 2/3, 3/3)
+- Dodanie PWA (manifest.json, service worker)
+- Kontener Docker + docker-compose
+- Automatyczne generowanie changeloga z Conventional Commits
