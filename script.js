@@ -29,7 +29,8 @@ document.addEventListener('DOMContentLoaded', () => {
   if (saveBtn) {
     saveBtn.addEventListener('click', () => {
       const note = document.getElementById('note-input').value;
-      localStorage.setItem('note', note);
+      const noteKey = `${currentQuestion}_note`;
+      localStorage.setItem(noteKey, note);
       saveBtn.innerText = 'Zapisano!';
       setTimeout(() => {
         saveBtn.innerText = 'Zapisz notatkę';
