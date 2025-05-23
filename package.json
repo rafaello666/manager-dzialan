@@ -1,0 +1,21 @@
+{
+    "name": "dopamine-manager",
+    "version": "1.0.0",
+    "description": "Prosta aplikacja webowa do zarządzania dopaminą i zadaniami.",
+    "main": "script.js",
+    "scripts": {
+      "start": "serve .",
+      "lint": "eslint . --ext .js",
+      "test": "jest"
+    },
+    "author": "rafaello666",
+    "license": "MIT",
+    "dependencies": {
+      "serve": "^15.0.1"
+    },
+    "devDependencies": {
+      "eslint": "^8.57.0",
+      "jest": "^29.7.0"
+    }
+  }
+  

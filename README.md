@@ -18,6 +18,17 @@ npx serve
 Po starcie serwera otwórz `http://localhost:8000` i aplikacja będzie działać
 poprawnie.
 
+## Start lokalnie
+
+```bash
+npm install
+npm start
+npm install
+npm run lint
+npm test
+npm start
+Otwórz: http://localhost:3000 lub http://localhost:5000
+
 ## Struktura projektu
 
 - `index.html` – główny plik strony zawierający layout oraz przyciski nawigacyjne.
