@@ -1,27 +1,33 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Dopamine-Manager 🚀</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
     <h1 class="glow">🚀 Dopamine-Manager</h1>
+
+    <!-- Kontener pytania i przycisków TAK/NIE -->
     <div id="question-container">
-      <p id="question"></p>
+      <p id="question"><!-- Treść pytania wstawiana dynamicznie --></p>
       <div id="buttons">
         <button id="yes-btn" class="neon-btn green">✅ TAK</button>
         <button id="no-btn" class="neon-btn red">❌ NIE</button>
       </div>
     </div>
+
+    <!-- Kontener akcji (po odpowiedzi wymagającej wykonania zadania) -->
     <div id="action-container" style="display: none;">
-      <p id="action"></p>
+      <p id="action"><!-- Tekst akcji do wykonania --></p>
       <textarea id="note-input" placeholder="Dodaj notatkę..."></textarea>
       <button id="save-note-btn" class="neon-btn blue">Zapisz notatkę</button>
       <button id="continue-btn" class="neon-btn blue">⏩ Kontynuuj</button>
     </div>
   </div>
+
+  <!-- Osadzenie skryptu JavaScript -->
   <script src="script.js"></script>
 </body>
 </html>
