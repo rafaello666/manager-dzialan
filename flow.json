@@ -1,4 +1,15 @@
 {
+   "jezdzijbolcem": {
+      "text": "czy aplikacja bolt driver ma godziny dostepne do jezdzenia?",
+      "yesAction": "jezdzij bolcem",
+      "no": "TRENING_FIZYCZNY_albo_sen"
+    },
+  "TRENING_FIZYCZNY_albo_sen": {
+     "text": "czy zrobiles trening w okienku przerwy 6-godzinnej i ona nadal trwa?",
+     "yesAction": "śpij i ustaw budzik na moment pojawienia sie dostepnych do jezdzenia godzin w bolcie",
+     "noAction": "zrob trening zaproponowany przez chatgpt w domu bez sprzetu albo full dyspozycyjny na silowni calodobowej"
+  },
+  
   "walenie_konia": {
     "text": "Czy zwaliles sobie konia jesli zaczales go sobie walic?",
     "yes": "kontakt z rodzina, rodzicami",
@@ -12,14 +23,9 @@
   "spotkanie_ze_znajomym": {
     "text": "czy monika lub ktorys z twoich znajomych ma ochote sie z toba spotkac?",
     "yesAction": "idz na spotkanie z tym kims",
-    "no": "jezdzijbolcem",
-    "next": "jezdzijbolcem"
+    "no": "aplikacja",
   },
-    "jezdzijbolcem": {
-      "text": "czy aplikacja bolt driver ma godziny dostepne do jezdzenia?",
-      "yesAction": "jezdzij bolcem",
-      "no": "aplikacja"
-    },
+   
     "aplikacja": {
       "text": "Jak uważasz, czy Twoja aplikacja do działań jest zaktualizowana optymalnie?",
       "yes": "kmbolt",
