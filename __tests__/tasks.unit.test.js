@@ -57,4 +57,3 @@ const {
       expect(stored).toHaveLength(0);
     });
   });
-  
