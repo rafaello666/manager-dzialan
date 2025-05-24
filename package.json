@@ -1,15 +1,20 @@
 {
-  "name": "adhd-manager",
+  "name": "manager-zadan",
   "version": "1.0.0",
-  "description": "ADHD Manager – proste zarządzanie zadaniami",
+  "description": "Prosty manager zadań w czystym JS",
+  "main": "script.js",
   "scripts": {
-    "start": "serve -p 3000",
-    "lint": "eslint .",
+    "start": "live-server",       // jeśli używasz live-server
     "test": "jest"
   },
+  "author": "Rafał",
+  "license": "MIT",
   "devDependencies": {
-    "serve": "^14.2.0",
-    "eslint": "^8.57.0",
     "jest": "^29.7.0"
+  },
+  "jest": {
+    "testEnvironment": "jsdom"
   }
 }
+
+

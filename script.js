@@ -1,84 +1,101 @@
-let flow;
+/* ---------- ZMIENNE GLOBALNE ---------- */
+let flow = {};
 let currentQuestion;
 const FINAL_STEP_ID = 'Q006';
 
-document.addEventListener('DOMContentLoaded', () => {
-  fetch('flow.json')
-    .then(res => res.json())
-    .then(json => {
-      if (!validateFlow(json)) {
-        throw new Error('Niepoprawny format danych');
-      }
-      flow = json;
-      // Pobierz KLUCZ pierwszego pytania z flow.json
-      currentQuestion = Object.keys(flow)[0];
-      displayQuestion(currentQuestion);
-    })
-    .catch(err => {
-      console.error('Błąd ładowania flow.json:', err);
-      showError('Problem z wczytaniem danych. Spróbuj ponownie później.');
-    });
-  document.getElementById('yes-btn')
-    .addEventListener('click', () => handleAnswer('yes'));
-  document.getElementById('no-btn')
-    .addEventListener('click', () => handleAnswer('no'));
-  document.getElementById('continue-btn')
-    .addEventListener('click', continueAfterAction);
+/* ---------- HELPER ---------- */
+const qs = (id) => document.getElementById(id);
 
-  const saveBtn = document.getElementById('save-note-btn');
-  if (saveBtn) {
-    saveBtn.addEventListener('click', () => {
-      const note = document.getElementById('note-input').value;
-      localStorage.setItem('note', note);
-      saveBtn.innerText = 'Zapisano!';
-      setTimeout(() => {
-        saveBtn.innerText = 'Zapisz notatkę';
-      }, 2000);
-    });
-  }document.getElementById('save-note-btn')
-    .addEventListener('click', () => {
-      const note = document.getElementById('note-input').value;
-      localStorage.setItem(`${currentQuestion}_note`, note);
-    });
-});
+/* ---------- INICJALIZACJA ---------- */
+document.addEventListener('DOMContentLoaded', init);
 
-function displayQuestion(id) {
-  const q = flow[id];
-  document.getElementById('question').innerText = q.text;
-  document.getElementById('buttons').style.display = q.done ? 'none' : 'flex';
-  document.getElementById('question-container').style.display = 'block';
-  document.getElementById('action-container').style.display = 'none';
+async function init() {
+  try {
+    const res  = await fetch('flow.json');
+    const json = await res.json();
+
+    if (!validateFlow(json)) {
+      throw new Error('Niepoprawny format danych');
+    }
+
+    flow            = json;
+    currentQuestion = Object.keys(flow)[0];      // pierwszy klucz w pliku
+    displayQuestion(currentQuestion);
+  } catch (err) {
+    console.error('Błąd ładowania flow.json:', err);
+    showError('Problem z wczytaniem danych. Spróbuj ponownie później.');
+  }
+
+  qs('yes-btn')?.addEventListener('click', () => handleAnswer('yes'));
+  qs('no-btn')?.addEventListener('click', () => handleAnswer('no'));
+  qs('continue-btn')?.addEventListener('click', continueAfterAction);
+  qs('save-note-btn')?.addEventListener('click', saveNote);
 }
 
+/* ---------- OBSŁUGA NOTATEK ---------- */
+function saveNote() {
+  const note = qs('note-input').value;
+  localStorage.setItem(`${currentQuestion}_note`, note);
+
+  const btn = qs('save-note-btn');
+  if (btn) {
+    btn.innerText = 'Zapisano!';
+    setTimeout(() => (btn.innerText = 'Zapisz notatkę'), 2000);
+  }
+}
+
+/* ---------- WYSWIETLANIE PYTAŃ ---------- */
+function displayQuestion(id) {
+  const step = flow[id];
+  if (!step) {
+    showError('Nie znaleziono kroku.');
+    return;
+  }
+
+  qs('question').innerText                  = step.text || '';
+  qs('buttons').style.display               = step.done ? 'none' : 'flex';
+  qs('question-container').style.display    = 'block';
+  qs('action-container').style.display      = 'none';
+}
+
+/* ---------- OBSŁUGA ODPOWIEDZI ---------- */
 function handleAnswer(answer) {
   const step = flow[currentQuestion];
-  // jeśli mamy next-step
+  if (!step) return;
+
+  // 1) przejście do kolejnego kroku
   if (step[answer]) {
     currentQuestion = step[answer];
     displayQuestion(currentQuestion);
+    return;
   }
-  // jeśli mamy action zamiast next
-  else if (step[answer + 'Action']) {
-    displayAction(step[answer + 'Action']);
+
+  // 2) wyświetlenie akcji (yesAction / noAction)
+  const actionKey = `${answer}Action`;
+  if (step[actionKey]) {
+    displayAction(step[actionKey]);
+    return;
   }
-  // jeśli krok DONE
-  else if (step.done) {
+
+  // 3) jeżeli krok jest oznaczony jako done
+  if (step.done) {
     displayQuestion(currentQuestion);
   }
 }
 
+/* ---------- WYSWIETLANIE AKCJI ---------- */
 function displayAction(text) {
-  document.getElementById('action').innerText = text;
-  const noteKey = `${currentQuestion}_note`;
-  const saved = localStorage.getItem(noteKey) || '';
-  document.getElementById('note-input').value = saved;
-  document.getElementById('question-container').style.display = 'none';
-  document.getElementById('action-container').style.display = 'block';
+  qs('action').innerText                    = text;
+  qs('note-input').value                    = localStorage.getItem(`${currentQuestion}_note`) || '';
+  qs('question-container').style.display    = 'none';
+  qs('action-container').style.display      = 'block';
 }
 
+/* ---------- KONTYNUACJA PO AKCJI ---------- */
 function continueAfterAction() {
-  let step = flow[currentQuestion];
-  // po akcji idziemy do wskazanego kroku lub do yes/no, a na końcu do FINAL_STEP_ID
+  const step = flow[currentQuestion];
+  if (!step) return;
+
   if (step.next) {
     currentQuestion = step.next;
   } else if (step.yes) {
@@ -91,26 +108,34 @@ function continueAfterAction() {
   displayQuestion(currentQuestion);
 }
 
-
+/* ---------- OBSŁUGA BŁĘDÓW ---------- */
 function showError(message) {
-  const qElem = document.getElementById('question');
-  qElem.innerText = message;
-  document.getElementById('buttons').style.display = 'none';
-  document.getElementById('question-container').style.display = 'block';
-  document.getElementById('action-container').style.display = 'none';
+  qs('question').innerText                  = message;
+  qs('buttons').style.display               = 'none';
+  qs('question-container').style.display    = 'block';
+  qs('action-container').style.display      = 'none';
 }
 
+/* ---------- WALIDACJA STRUKTURY FLOW ---------- */
 function validateFlow(data) {
-  if (typeof data !== 'object' || data === null) {
-    return false;
-  }
-  for (const step of Object.values(data)) {
-    if (typeof step !== 'object' || step === null) {
-      return false;
-    }
-    if (!('text' in step || 'done' in step)) {
-      return false;
-    }
-  }
-  return true;
+  if (typeof data !== 'object' || data === null) return false;
+
+  return Object.values(data).every((step) => {
+    if (typeof step !== 'object' || step === null) return false;
+    return 'text' in step || step.done === true;
+  });
+}
+
+/* ---------- EXPORTY DLA TESTÓW (Jest) ---------- */
+if (typeof module !== 'undefined') {
+  module.exports = {
+    // główne funkcje, które warto testować
+    validateFlow,
+    displayQuestion,
+    handleAnswer,
+    displayAction,
+    continueAfterAction,
+    showError,
+    init
+  };
 }
