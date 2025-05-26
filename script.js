@@ -29,10 +29,24 @@ async function init() {
   qs('save-note-btn')?.addEventListener('click', saveNote);
   qs('show-note-btn')?.addEventListener('click', () => showNoteModal(currentQuestion));
   qs('closeNoteModal')?.addEventListener('click', hideNoteModal);
+
   // klik na tło modala = zamknięcie
   qs('noteModal')?.addEventListener('click', (e) => {
     if (e.target === qs('noteModal')) hideNoteModal();
   });
+
+  // PWA: rejestracja Service Workera
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/service-worker.js')
+        .then(reg => console.log('Service Worker zarejestrowany:', reg))
+        .catch(err => console.error('Błąd Service Workera:', err));
+    });
+  }
+
+  // Banner offline/online
+  window.addEventListener('online',  () => qs('offline-banner').style.display = 'none');
+  window.addEventListener('offline', () => qs('offline-banner').style.display = 'block');
 }
 
 /* ---------- NOTATKI ---------- */

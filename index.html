@@ -4,6 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Dopamine-Manager 🚀</title>
+  <!-- PWA manifest i ikony -->
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png">
+  <meta name="theme-color" content="#111111">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -42,6 +47,24 @@
     </div>
   </div>
 
+  <!-- Banner offline (opcjonalnie, możesz schować jeśli nie chcesz) -->
+  <div id="offline-banner" style="display:none;position:fixed;top:0;left:0;right:0;background:#d32f2f;color:#fff;padding:0.6em;text-align:center;z-index:1200;">
+    Brak połączenia z Internetem – tryb offline!
+  </div>
+
   <script src="script.js"></script>
+  <script>
+    // PWA: rejestracja service workera
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+          .then(reg => console.log('Service Worker zarejestrowany:', reg))
+          .catch(err => console.error('Błąd Service Workera:', err));
+      });
+    }
+    // Banner offline/online
+    window.addEventListener('online',  () => document.getElementById('offline-banner').style.display = 'none');
+    window.addEventListener('offline', () => document.getElementById('offline-banner').style.display = 'block');
+  </script>
 </body>
 </html>
