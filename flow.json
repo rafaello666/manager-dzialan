@@ -1,5 +1,4 @@
 {
-<<<<<<< HEAD
   "jezdzijbolcem": {
      "text": "czy aplikacja bolt driver ma godziny dostepne do jezdzenia?",
      "yesAction": "jezdzij bolcem",
@@ -21,12 +20,7 @@
    "yes": "spotkanie_ze_znajomym",
    "noAction": "zadzwoń do rodziców do taty albo do mamy i pogadaj z nimi"
  },
- "spotkanie_ze_znajomym": {
-   "text": "czy monika lub ktorys z twoich znajomych ma ochote sie z toba spotkac?",
-   "yesAction": "idz na spotkanie z tym kims",
-   "no": "aplikacja",
- },
-  
+
    "aplikacja": {
      "text": "Jak uważasz, czy Twoja aplikacja do działań jest zaktualizowana optymalnie?",
      "yes": "kmbolt",
@@ -55,12 +49,12 @@
      "yesAction": "Świetnie zaplanowane – powodzenia we wdrożeniu!",
      "noAction": "Otwórz kalendarz i wyznacz najbliższy wolny blok (nawet 30 min) na pracę nad aktualizacją. Ustaw przypomnienie, żeby nie zapomnieć.",
      "next": "kmbolt"
-   },
-   "kmbolt": {
-     "text": "czy przeanalizowales sesje z chatgpt na temat kiloemtrow w bolt?",
-     "yes": "Qmonitor",
-     "noAction": "przeanalizuj i dokoncz kwestie z kilometrami z chatgpt"
-   },
+      },
+      "DESTRUKCJA_STAREJ_KURWY": {
+        "text": "Czy wrzuciłeś na starą kurwę wszystko do internetu i zapewniłeś sobie anonimowość?",
+        "yes": "Qmonitor",
+        "noAction": "WRZUĆ WSZYSTKO NA STARĄ KURWĘ DO INTERNETU"
+      },
    "Qmonitor": {
      "text": "Czy masz włączony monitoring zajęć?",
      "yes": "Q001",
@@ -169,174 +163,3 @@
      "done": true
    }
  }
-=======
-   "jezdzijbolcem": {
-      "text": "czy aplikacja bolt driver ma godziny dostepne do jezdzenia?",
-      "yesAction": "jezdzij bolcem",
-      "no": "TRENING_FIZYCZNY_albo_sen"
-    },
-  "TRENING_FIZYCZNY_albo_sen": {
-     "text": "czy zrobiles trening w okienku przerwy 6-godzinnej i ona nadal trwa?",
-     "yesAction": "śpij i ustaw budzik na moment pojawienia sie dostepnych do jezdzenia godzin w bolcie",
-     "noAction": "zrob trening zaproponowany przez chatgpt w domu bez sprzetu albo full dyspozycyjny na silowni calodobowej"
-  },
-  
-  "walenie_konia": {
-    "text": "Czy zwaliles sobie konia jesli zaczales go sobie walic?",
-    "yes": "kontakt z rodzina, rodzicami",
-    "noAction": "Zwal konia"
-  },
- "kontakt z rodziną, rodzicami": {
-    "text": "czy dzwoniles dzisiaj do rodziców albo byles u nich osobiscie albo jest godzina ze spia?",
-    "yes": "spotkanie_ze_znajomym",
-    "noAction": "zadzwoń do rodziców do taty albo do mamy i pogadaj z nimi"
-  },
-  "spotkanie_ze_znajomym": {
-    "text": "czy monika lub ktorys z twoich znajomych ma ochote sie z toba spotkac?",
-    "yesAction": "idz na spotkanie z tym kims",
-    "no": "aplikacja",
-  },
-   
-    "aplikacja": {
-      "text": "Jak uważasz, czy Twoja aplikacja do działań jest zaktualizowana optymalnie?",
-      "yes": "kmbolt",
-      "no": "aplikacja_pomysly"
-    },
-    "aplikacja_pomysly": {
-      "text": "Czy masz już gdzieś spisane pomysły ulepszeń do swojej aplikacji (np. z rozmów z ChatGPT)?",
-      "yes": "aplikacja_priorytet",
-      "noAction": "Wyeksportuj lub spisz swoje pomysły na ulepszenia – przejrzyj historie czatów, notatki. Zgromadź je w jednym miejscu (np. Notion lub plik markdown).",
-      "next": "aplikacja_priorytet"
-    },
-    "aplikacja_priorytet": {
-      "text": "Czy z tej listy pomysłów wybrałeś jeden priorytetowy, który zrealizujesz jako pierwszy?",
-      "yes": "aplikacja_plan",
-      "noAction": "Przejrzyj listę i wybierz jeden pomysł, od którego zaczniesz aktualizację (np. najbardziej wartościowy lub najszybszy do wdrożenia).",
-      "next": "aplikacja_plan"
-    },
-    "aplikacja_plan": {
-      "text": "Czy masz opracowany plan wdrożenia tego pomysłu (podzielony na małe zadania)?",
-      "yes": "aplikacja_realizacja",
-      "noAction": "Rozbij wybrany pomysł na mniejsze kroki/zadania. Wypisz konkretnie, co po kolei zrobisz, aby go wdrożyć.",
-      "next": "aplikacja_realizacja"
-    },
-    "aplikacja_realizacja": {
-      "text": "Czy zaplanowałeś już konkretny czas na pracę nad wdrożeniem tego pomysłu w aplikacji?",
-      "yesAction": "Świetnie zaplanowane – powodzenia we wdrożeniu!",
-      "noAction": "Otwórz kalendarz i wyznacz najbliższy wolny blok (nawet 30 min) na pracę nad aktualizacją. Ustaw przypomnienie, żeby nie zapomnieć.",
-      "next": "kmbolt"
-    },
-    "kmbolt": {
-      "text": "czy przeanalizowales sesje z chatgpt na temat kiloemtrow w bolt?",
-      "yes": "Qmonitor",
-      "noAction": "przeanalizuj i dokoncz kwestie z kilometrami z chatgpt"
-    },
-    "Qmonitor": {
-      "text": "Czy masz włączony monitoring zajęć?",
-      "yes": "Q001",
-      "noAction": "Uruchom aplikację do monitorowania zajęć lub jeśli jej nie masz to stwórz ją."
-    },
-    "Q001": {
-      "text": "Czy masz metylfenidat lub modafinil lub piko?",
-      "yes": "QN2",
-      "noAction": "Zarabiaj na Bolcie, aby zdobyć środki."
-    },
-    "QN2": {
-      "text": "Czy masz już odblokowane Bolt Driver i nie wyglądasz ani nie zachowujesz się jak nacpany albo jak wrak człowieka?",
-      "yesAction": "Kup energetyka, zatankuj i idź zapierdalaj 12 h na Bolcie bez przerwy.",
-      "no": "Qp1"
-    },
-    "Qp1": {
-      "text": "Czy minęło 1.5 godziny od ostatniego przyjęcia Piko?",
-      "yes": "Qp2",
-      "noAction": "Oglądaj zdjęcia perwersyjne i ewentualnie wal konia do tego."
-    },
-    "Qp2": {
-      "text": "Czy podczas oglądania perwersyjnych zdjęć zrobiłeś ostatnie swoje ćwiczenie fizyczne ponad 7 minut temu?",
-      "yesAction": "Zrób ćwiczenie fizyczne, a następnie zapisz do czatu GPT o wyniku i godzinie.",
-     "noAction": "Kontynuuj oglądanie perwersyjnych zdjęć oraz przejdź dalej, jeśli coś jest możliwe jeszcze do zrealizowania.",
-      "next": "Qp3"
-    },
-    "Qp3": {
-      "text": "Czy w ciągu ostatnich 15 minut ćwiczyłeś Agile Fingers przez co najmniej 2 minuty?",
-      "yes": "Qstart",
-      "noAction": "Poćwicz w Agile Fingers co najmniej 2 minuty."
-    },
-    "Qstart": {
-      "text": "Czy czujesz się źle?",
-      "yes": "Qbad",
-      "no": "QADHD"
-    },
-    "Qbad": {
-      "text": "Czy wiesz, co zrobić, aby przestać się źle czuć?",
-      "yesAction": "Zrób to natychmiast, aby poprawić samopoczucie.",
-      "no": "QADHD"
-    },
-    "QADHD": {
-      "text": "Czy nie masz siły pracować albo masz objawy ADHD dość mocne uniemożliwiające Ci satysfakcjonujące życie?",
-      "yesAction": "Przyjmij Piko.",
-      "no": "QN1"
-    },
-    "QN1": {
-      "text": "Czy dojebales szczepan?",
-      "yes": "QN2",
-      "noAction": "Praca nad darkwebem 1.5 godziny."
-    },
-    "QMILF": {
-      "text": "Czy masz w najbliższych minutach do czynienia z milfem?",
-      "yesAction": "Weź Piko.",
-      "no": "Qsleep"
-    },
-    "Qsleep": {
-      "text": "Czy chce mi się spać?",
-      "yesAction": "Idź spać i odpocznij.",
-      "no": "Q000"
-    },
-    "Q000": {
-      "text": "Czy minęły 3 godziny od Twojej ostatniej co najmniej 30-minutowej pracy z Chatem GPT?",
-      "yesAction": "Pracuj w domu z Chatem GPT przez co najmniej 30 minut.",
-      "no": "Q002"
-    },
-    "Q002": {
-      "text": "Czy czujesz się nadopaminowany?",
-      "yes": "Q003",
-      "noAction": "Nadopaminuj się metylofenidatem lub modafinilem lub, jeśli nie masz, wypij dwa energetyki."
-    },
-    "Q003": {
-      "text": "Czy jadłeś w ciągu ostatnich 3 godzin?",
-      "yes": "Q004",
-      "noAction": "Zjedz coś teraz."
-    },
-    "Q004": {
-      "text": "Czy oddałeś długi?",
-      "yes": "Q004a",
-      "noAction": "Zarabiaj, aby spłacić długi."
-    },
-    "Q004a": {
-      "text": "Czy masz środki na koncie lub gotówkę?",
-      "yes": "Qfinanse",
-      "noAction": "Jeździj na Bolcie, aż zarobisz potrzebną gotówkę."
-    },
-    "Qfinanse": {
-      "text": "Czy zaplanowałeś na dziś działania poprawiające Twoją sytuację finansową?",
-      "yes": "Qtrening",
-      "noAction": "Wypisz konkretny plan finansowy na najbliższy czas, np. ile kursów Boltem zrobisz.",
-      "next": "Qtrening"
-    },
-    "Qtrening": {
-      "text": "Czy zrobiłeś dziś trening siłowy lub zaplanowałeś go w kalendarzu?",
-      "yes": "Q005",
-      "noAction": "Wykonaj co najmniej 30 minut treningu siłowego albo rozpisz krótszy zestaw ćwiczeń.",
-      "next": "Q005"
-    },
-    "Q005": {
-      "text": "Pracowałeś z ChatGPT PRO min. 2 godzin?",
-      "yes": "Q006",
-      "noAction": "Pracuj z ChatGPT PRO."
-    },
-    "Q006": {
-      "text": "Wszystko wykonane na dziś! 🎉",
-      "done": true
-    }
-  }
->>>>>>> 33c509ff1ef6490e6955d5ac99b2ea16a2c80670
