@@ -2,6 +2,7 @@
 <html lang="pl">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Dopamine-Manager 🚀</title>
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -10,14 +11,11 @@
     <h1 class="glow">🚀 Dopamine-Manager</h1>
 
     <!-- BLOK PYTANIA -->
-    <div id="question-container">
+    <section id="question-container">
       <p id="question"></p>
-
       <div id="buttons">
         <button id="yes-btn"  class="neon-btn green">✅ TAK</button>
         <button id="no-btn"   class="neon-btn red">❌ NIE</button>
-
-        <!-- przycisk / ikona notatki (pojawia się tylko gdy istnieje notatka) -->
         <button id="show-note-btn"
                 class="note-icon-btn"
                 title="Pokaż notatkę"
@@ -25,22 +23,21 @@
           📝 Notatka
         </button>
       </div>
-    </div>
+    </section>
 
     <!-- BLOK AKCJI -->
-    <div id="action-container" style="display:none">
+    <section id="action-container" style="display:none">
       <p id="action"></p>
-
       <textarea id="note-input" placeholder="Dodaj notatkę..."></textarea>
       <button id="save-note-btn" class="neon-btn blue">Zapisz notatkę</button>
       <button id="continue-btn"  class="neon-btn blue">⏩ Kontynuuj</button>
-    </div>
+    </section>
   </div>
 
   <!-- MODAL z treścią notatki -->
   <div id="noteModal" class="modal" style="display:none">
     <div class="modal-content note-container">
-      <button id="closeNoteModal" class="close-btn">&times;</button>
+      <button id="closeNoteModal" class="close-btn" aria-label="Zamknij notatkę">&times;</button>
       <div id="noteContent"></div>
     </div>
   </div>
