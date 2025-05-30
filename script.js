@@ -153,3 +153,52 @@ if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
     saveNote, showNoteModal, hideNoteModal
   };
 }
+// ======= GLOBALNY TIMER / STOPER =======
+let timerInterval = null;
+let timerSeconds = 0;
+let timerRunning = false;
+
+const display = document.getElementById('timer-display');
+const startBtn = document.getElementById('timer-start');
+const pauseBtn = document.getElementById('timer-pause');
+const stopBtn  = document.getElementById('timer-stop');
+
+// Formatowanie czasu hh:mm:ss
+function formatTime(secs) {
+  const h = Math.floor(secs / 3600);
+  const m = Math.floor((secs % 3600) / 60);
+  const s = secs % 60;
+  return `${h.toString().padStart(2,'0')}:${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
+}
+
+function updateTimerDisplay() {
+  display.innerText = formatTime(timerSeconds);
+}
+
+function startTimer() {
+  if (timerRunning) return;
+  timerRunning = true;
+  timerInterval = setInterval(() => {
+    timerSeconds++;
+    updateTimerDisplay();
+  }, 1000);
+}
+
+function pauseTimer() {
+  timerRunning = false;
+  clearInterval(timerInterval);
+}
+
+function stopTimer() {
+  timerRunning = false;
+  clearInterval(timerInterval);
+  timerSeconds = 0;
+  updateTimerDisplay();
+}
+
+startBtn.onclick = startTimer;
+pauseBtn.onclick = pauseTimer;
+stopBtn.onclick  = stopTimer;
+
+// Po załadowaniu strony wyzeruj licznik
+updateTimerDisplay();
