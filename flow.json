@@ -1,20 +1,10 @@
 {
-  "jezdzijbolcem": {
-     "text": "czy aplikacja bolt driver ma godziny dostepne do jezdzenia?",
-     "yesAction": "jezdzij bolcem",
-     "no": "TRENING_FIZYCZNY_albo_sen"
-   },
- "TRENING_FIZYCZNY_albo_sen": {
-    "text": "czy zrobiles trening w okienku przerwy 6-godzinnej i ona nadal trwa?",
-    "yesAction": "śpij i ustaw budzik na moment pojawienia sie dostepnych do jezdzenia godzin w bolcie",
-    "noAction": "zrob trening zaproponowany przez chatgpt w domu bez sprzetu albo full dyspozycyjny na silowni calodobowej"
- },
- 
- "walenie_konia": {
-   "text": "Czy zwaliles sobie konia jesli zaczales go sobie walic?",
-   "yes": "kontakt z rodzina, rodzicami",
-   "noAction": "Zwal konia"
- },
+  "skrypt bolt, komputer, trening, seks, spanie": {
+    "text": "czy jestes w trakcie realizacji cyklu pt - wyjezdzenie wszystkich godzin w aplikacji bolt, trening godzina, komputer 2 godziny, seks/walenie konia, spanie - ?",
+    "yes": "jezdzijbolcem",
+    "noAction": "zacznij się stosować do tego cyklu - pomyśl w czym jest problem, że się nie stosowałeś ewentualnie"
+    },
+
 "kontakt z rodziną, rodzicami": {
    "text": "czy dzwoniles dzisiaj do rodziców albo byles u nich osobiscie albo jest godzina ze spia?",
    "yes": "spotkanie_ze_znajomym",
